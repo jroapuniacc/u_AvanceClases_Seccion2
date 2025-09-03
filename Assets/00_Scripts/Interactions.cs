@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 public class Interactions : MonoBehaviour
 {
@@ -23,12 +24,19 @@ public class Interactions : MonoBehaviour
     [SerializeField] private int healthDecrease = 5;
     [SerializeField] private int healthIncrease = 10;
     
+    [Header("UI")]
+    [SerializeField] private GameObject uIDangerZone;
+
+    private IEnumerator corrutinaDangerZone;
+    
     
     private void Start()
     {
         animatorDoor = door.GetComponent<Animator>();
         doorCollider = door.GetComponent<Collider>();
+        corrutinaDangerZone = DangerZone();
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -49,6 +57,9 @@ public class Interactions : MonoBehaviour
                     animatorDoor.SetBool("Anim_Door", true);
                 }
                 break;
+            case "ZoneDanger":
+                StartCoroutine(corrutinaDangerZone);
+                break;
             
         }
     }
@@ -61,11 +72,14 @@ public class Interactions : MonoBehaviour
                 isDoorShut = true;
                 doorCollider.isTrigger = false; 
                 break;
+            case "ZoneDanger":
+                StopCoroutine(corrutinaDangerZone);
+                uIDangerZone.SetActive(false);
+                break;
         }
     }
 
-
-    private void OnTriggerStay(Collider other)
+    /*private void OnTriggerStay(Collider other)
     {
         switch (other.tag)
         {
@@ -83,6 +97,18 @@ public class Interactions : MonoBehaviour
                     Debug.Log("Mi vida es: "  + health); // Concatenar
                 }
                 break;
+        }
+    }*/
+
+    IEnumerator DangerZone()
+    {
+        while (health >= 0)
+        {
+            health -= healthDecrease;
+            uIDangerZone.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            uIDangerZone.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
