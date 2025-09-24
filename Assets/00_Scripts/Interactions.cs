@@ -11,6 +11,7 @@ public class Interactions : MonoBehaviour
     [Tooltip("Arcorisia... este es un otro bolleano")]
     [SerializeField] private bool key2;
     
+    
     [Header("DOOR")]
     [Tooltip("Arcorisia... arrastra el pivotdoor.. el que tiene el Animator")]
     [SerializeField] private GameObject door;
@@ -28,11 +29,24 @@ public class Interactions : MonoBehaviour
     [SerializeField] private GameObject uIDangerZone;
 
     private IEnumerator corrutinaDangerZone;
+
+    private Collider colliderDoor;
+
+
+    private IEnumerator myMenu;
+    
+    
     
     
     private void Start()
     {
+        
         animatorDoor = door.GetComponent<Animator>();
+        colliderDoor = door.GetComponent<Collider>();
+
+        myMenu = Mymenu();
+        
+        //animatorDoor = door.GetComponent<Animator>();
         doorCollider = door.GetComponent<Collider>();
         corrutinaDangerZone = DangerZone();
     }
@@ -45,13 +59,17 @@ public class Interactions : MonoBehaviour
             case "NPC1":
                 Debug.Log("Obtuve la llave 1.. al fin");
                 key1 = true;
+                doorCollider.enabled = false;
+                
+                StartCoroutine(myMenu);
+                
                 break;
             case "NPC2":
                 Debug.Log("Obtuve la llave 2.. al fin");
                 key2 = true;
                 break;
             case "Door":
-                if (key1 || key2)
+                if (key1 && key2)
                 {
                     Debug.Log("Abrí la puerta");
                     animatorDoor.SetBool("Anim_Door", true);
@@ -71,6 +89,9 @@ public class Interactions : MonoBehaviour
                 animatorDoor.SetBool("Anim_Door", false);
                 isDoorShut = true;
                 doorCollider.isTrigger = false; 
+                
+                StopCoroutine(myMenu);
+                
                 break;
             case "ZoneDanger":
                 StopCoroutine(corrutinaDangerZone);
@@ -111,6 +132,26 @@ public class Interactions : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+    
+    //CamelCase
+    //variable: minusculaMayuscula
+    //Métodos: MayusculaMayusculaMayuscula
+
+    IEnumerator Mymenu()
+    {
+        Debug.Log("Play a la música");
+        Debug.Log("Activa ui de Titulo");
+        yield return new WaitForSeconds(2f);
+        Debug.Log("activa botón play");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("activa botón de opciones");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("ACtivaescena Demo: Insert Coin");
+        yield return new WaitForSeconds(30f);
+        
+    }
+    
+    
 }
 
 
