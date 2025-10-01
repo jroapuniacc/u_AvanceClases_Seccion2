@@ -2,22 +2,22 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-public class PlusHealth : MonoBehaviour
+public class DamageHealth : MonoBehaviour
 {
-    [SerializeField] private int healthIncrease = 10;
-    private IEnumerator plusHealthCorrutine;
-
+    [SerializeField] private int healthDecrease = 10;
+    private IEnumerator damageHealthCorrutine;
+    
+    
     private void Start()
     {
-        plusHealthCorrutine = PlusHealthCorrutine();
-
+        damageHealthCorrutine = DamageHealthCorrutine();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(plusHealthCorrutine);
+            StartCoroutine(damageHealthCorrutine);
         }
     }
 
@@ -25,18 +25,21 @@ public class PlusHealth : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StopCoroutine(plusHealthCorrutine);
+            StopCoroutine(damageHealthCorrutine);
         }
     }
 
-    private IEnumerator PlusHealthCorrutine()
+    IEnumerator DamageHealthCorrutine()
     {
         while (GameManager.instance.health >= 0)
         {
-            GameManager.instance.AddHealth(healthIncrease);
+            GameManager.instance.MinusHealth(healthDecrease);
             yield return new WaitForSeconds(1f);
         }
     }
+
+    public void Palanca()
+    {
         
-        
+    }
 }

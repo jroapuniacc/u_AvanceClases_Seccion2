@@ -753,6 +753,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b86ce070ea45a648b11a30082e5aa61, type: 3}
+--- !u!1 &463052061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7685423809495335312, guid: b3f0a0770fa85f1469319660278e9ebe, type: 3}
+  m_PrefabInstance: {fileID: 466382833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &463052065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463052061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083aa8c67340180439b8f55c592b7a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &466382833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -816,7 +833,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7685423809495335312, guid: b3f0a0770fa85f1469319660278e9ebe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 463052065}
   m_SourcePrefab: {fileID: 100100000, guid: b3f0a0770fa85f1469319660278e9ebe, type: 3}
 --- !u!1001 &607133947
 PrefabInstance:
@@ -1781,6 +1801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1214844531}
   - component: {fileID: 1214844532}
+  - component: {fileID: 1214844533}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -1826,6 +1847,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5609562, y: 3.1661468, z: 1.0444736}
   m_Center: {x: 0.7237927, y: 1.0830734, z: -0.022236824}
+--- !u!114 &1214844533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214844530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677da2d7d207cf54eb7ec8c3281b18d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionsNPC: {fileID: 463052065}
 --- !u!1001 &1571784887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2291,6 +2325,7 @@ GameObject:
   - component: {fileID: 1964301330}
   - component: {fileID: 1964301329}
   - component: {fileID: 1964301333}
+  - component: {fileID: 1964301334}
   m_Layer: 0
   m_Name: ZoneDanger
   m_TagString: ZoneDanger
@@ -2409,6 +2444,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1964301334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964301328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b2bad68a4df0842ba43c08015b8dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthDecrease: 10
 --- !u!1 &2121854671
 GameObject:
   m_ObjectHideFlags: 0

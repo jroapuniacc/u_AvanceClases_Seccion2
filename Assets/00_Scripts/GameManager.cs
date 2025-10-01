@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -26,10 +27,18 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    public void AddHealth(int amount)
+    public void AddHealth(int sumaVida) // Puerta abierta a manejar la vida
     {
-        health += amount;
+        health += sumaVida;
     }
+
+    public void MinusHealth(int restaVida)
+    {
+        health -= restaVida;
+    }
+    
+    
+   
     
     
 }
