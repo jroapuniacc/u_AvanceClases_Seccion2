@@ -36,7 +36,8 @@ public class DamageHealth : MonoBehaviour
             GameManager.instance.MinusHealth(healthDecrease);
             yield return new WaitForSeconds(1f);
         }
-    }
+
+        }
 
     public void Palanca()
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            Debug.Log("Soy el único Dios! muerte piumpium");
         }
     }
     
@@ -35,7 +37,21 @@ public class GameManager : MonoBehaviour
     public void MinusHealth(int restaVida)
     {
         health -= restaVida;
+        if (health <= 0)
+        {
+            GameOver();
+        }
     }
+    public void GameOver()
+    {
+        SceneManager.LoadScene("RestartMenu");
+    }
+
+    public void RestartHealth()
+    {
+        health = 100;
+    }
+    
     
     
    

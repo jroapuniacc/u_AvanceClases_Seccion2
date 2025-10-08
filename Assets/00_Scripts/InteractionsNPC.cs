@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class InteractionsNPC : MonoBehaviour
 {
-    private bool key1;
-    private bool key2;
+    public bool key1;
+    public bool key2;
 
 
     private void OnTriggerEnter(Collider other)
