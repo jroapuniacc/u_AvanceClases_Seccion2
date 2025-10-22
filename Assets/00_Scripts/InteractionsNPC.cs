@@ -5,6 +5,8 @@ public class InteractionsNPC : MonoBehaviour
 {
     public bool key1;
     public bool key2;
+    public Sprite key1Sprite;
+    public Sprite key2Sprite;
     
     // Referencia al inventario del personaje
     private Inventory playerInventory;
@@ -21,7 +23,7 @@ public class InteractionsNPC : MonoBehaviour
             case "NPC1":
                 key1 = true;
                 // Crear un nuevo (dato) ítem de Key1
-                Item key1Item = new Item("Key1", "Una llave de dos");
+                Item key1Item = new Item("Key1", "Una llave de dos", key1Sprite);
                 // Agregar el ítem al inventario
                 playerInventory.AddItem(key1Item);
                 //Destruye el objeto
@@ -30,7 +32,7 @@ public class InteractionsNPC : MonoBehaviour
                 break;
             case "NPC2":
                 // Crear un nuevo (dato) ítem de Key1
-                Item key2Item = new Item("Key2", "Una llave de dos");
+                Item key2Item = new Item("Key2", "Una llave de dos", key2Sprite);
                 // Agregar el ítem al inventario
                 playerInventory.AddItem(key2Item);
                 //Destruye el objeto
